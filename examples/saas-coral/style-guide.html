@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--
+  style-guide.html template for the style-guide skill.
+  The skill copies this file as style-guide.html and edits ONLY the JSON in <script id="system">.
+  Everything else is fixed, so the page looks the same on every run; only tokens.css and the JSON change.
+  Every visual value comes from tokens.css.
+-->
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style guide</title>
+
+<script id="system" type="application/json">
+{
+  "title": "SaaS analytics",
+  "input": "#E8553F",
+  "siteType": "saas",
+  "defaultTheme": "light",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "fontsHref": "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=JetBrains+Mono:wght@400&display=swap",
+  "intro": "Tokens for a B2B analytics product built from #E8553F. Desktop only, dense: the type range follows Stripe, Plane, and Klaviyo dashboards.",
+  "brand": {
+    "job": "#E8553F is brand/500. White text fails on it, so the Light primary button uses brand/600; Dark uses brand/500 with a dark label.",
+    "chips": [
+      {
+        "label": "50",
+        "token": "--brand-50"
+      },
+      {
+        "label": "100",
+        "token": "--brand-100"
+      },
+      {
+        "label": "200",
+        "token": "--brand-200"
+      },
+      {
+        "label": "300",
+        "token": "--brand-300"
+      },
+      {
+        "label": "400",
+        "token": "--brand-400"
+      },
+      {
+        "label": "500",
+        "token": "--brand-500"
+      },
+      {
+        "label": "600",
+        "token": "--brand-600"
+      },
+      {
+        "label": "700",
+        "token": "--brand-700"
+      },
+      {
+        "label": "800",
+        "token": "--brand-800"
+      },
+      {
+        "label": "900",
+        "token": "--brand-900"
+      },
+      {
+        "label": "950",
+        "token": "--brand-950"
+      }
+    ]
+  },
+  "neutralJob": "Backgrounds, text and borders, tinted toward the brand hue. A reference, not a fill to apply directly.",
+  "typeIntro": "Hanken Grotesk for headings and text, JetBrains Mono for captions, overlines, and numbers. Desktop only, so each step has one size.",
+  "families": {
+    "display": "Hanken Grotesk",
+    "body": "Hanken Grotesk",
+    "mono": "JetBrains Mono"
+  },
+  "screens": [
+    "desktop"
+  ],
+  "type": [
+    {
+      "step": "h1",
+      "job": "Page title.",
+      "family": "display",
+      "weight": "strong",
+      "sample": "Revenue overview"
+    },
+    {
+      "step": "h2",
+      "job": "Section title.",
+      "family": "display",
+      "weight": "strong",
+      "sample": "Subscriptions"
+    },
+    {
+      "step": "h3",
+      "job": "Panel title.",
+      "family": "display",
+      "weight": "strong",
+      "sample": "Monthly recurring revenue"
+    },
+    {
+      "step": "h4",
+      "job": "Group heading.",
+      "family": "display",
+      "weight": "strong",
+      "sample": "By plan"
+    },
+    {
+      "step": "h5",
+      "job": "Card title.",
+      "family": "display",
+      "weight": "strong",
+      "sample": "Active customers"
+    },
+    {
+      "step": "h6",
+      "job": "Table group or form section.",
+      "family": "display",
+      "weight": "strong",
+      "sample": "Billing details"
+    },
+    {
+      "step": "body",
+      "job": "Reading text and table cells.",
+      "family": "body",
+      "weight": "regular",
+      "sample": "Revenue grew 12% after the annual plan launched."
+    },
+    {
+      "step": "body-sm",
+      "job": "Dense tables and footnotes.",
+      "family": "body",
+      "weight": "regular",
+      "sample": "Excludes refunds issued after the close date."
+    },
+    {
+      "step": "label",
+      "job": "Field labels and navigation.",
+      "family": "body",
+      "weight": "strong",
+      "sample": "Date range"
+    },
+    {
+      "step": "button",
+      "job": "Button labels.",
+      "family": "body",
+      "weight": "strong",
+      "sample": "Export CSV"
+    },
+    {
+      "step": "caption",
+      "job": "Help text and chart axis labels.",
+      "family": "mono",
+      "weight": "regular",
+      "sample": "Updated 2 min ago"
+    },
+    {
+      "step": "overline",
+      "job": "Uppercase kicker above a metric.",
+      "family": "mono",
+      "weight": "regular",
+      "sample": "MRR · LAST 30 DAYS"
+    }
+  ],
+  "space": [
+    [
+      4,
+      "Badge padding, icon to number"
+    ],
+    [
+      8,
+      "Icon to label"
+    ],
+    [
+      12,
+      "Field padding, table cell padding"
+    ],
+    [
+      16,
+      "Button padding; image to text"
+    ],
+    [
+      24,
+      "Card padding"
+    ],
+    [
+      32,
+      "Card gap"
+    ],
+    [
+      48,
+      "Section gap"
+    ],
+    [
+      64,
+      "Page padding"
+    ]
+  ],
+  "radiusJob": "Controls use 6, menus and chips 8, panels 12, badges a pill. Cards with an inset image use the nested radius: outer equals inner plus padding.",
+  "radiusSteps": [
+    [
+      "sm",
+      6
+    ],
+    [
+      "md",
+      8
+    ],
+    [
+      "lg",
+      12
+    ]
+  ],
+  "nestedNote": "nested 30 = inner 6 + padding 24",
+  "card": {
+    "image": "inset",
+    "title": "Active customers",
+    "body": "1,284 accounts paid in the last 30 days."
+  },
+  "field": {
+    "label": "Workspace email",
+    "placeholder": "name@company.com",
+    "value": "ops@acme.io",
+    "help": "Reports go to this address.",
+    "error": "Enter an email like name@company.com."
+  },
+  "buttonLabel": "Export CSV"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-family: var(--family-body);
+    font-size: var(--size-body);
+    line-height: var(--line-height-body);
+    transition: background-color var(--duration-base) var(--ease-standard), color var(--duration-base) var(--ease-standard);
+  }
+  svg { display: block; flex: none; }
+  .mono, .meta, .cap, .state, .chip .step, .chip .hex, .space-row span, .shadow-card,
+  .radius-box, .nested-inner, .icon-set .name, .field .help, .field .err {
+    font-family: var(--family-mono, var(--family-body));
+    font-size: var(--size-caption); line-height: var(--line-height-caption);
+    letter-spacing: var(--tracking-caption, 0);
+  }
+
+  .page { display: flex; flex-direction: column; gap: var(--space-48); width: 100%; max-width: 1200px; margin: 0 auto; padding: var(--space-64); }
+  @media (max-width: 767px) { .page { padding: var(--space-24); } }
+  .topbar { display: flex; justify-content: space-between; align-items: center; gap: var(--space-16); }
+  .meta { color: var(--color-text-muted); }
+
+  section { display: flex; flex-direction: column; gap: var(--space-16); }
+  .header { display: flex; flex-direction: column; gap: var(--space-8); }
+  .header.page-title { gap: var(--space-16); }
+  .header h1, .comp-title {
+    font-family: var(--family-display); font-weight: var(--weight-strong);
+    font-size: var(--size-h2); line-height: var(--line-height-h2); letter-spacing: var(--tracking-h2, 0);
+  }
+  .header h2 {
+    font-family: var(--family-display); font-weight: var(--weight-strong);
+    font-size: var(--size-h3); line-height: var(--line-height-h3); letter-spacing: var(--tracking-h3, 0);
+  }
+  .header p { color: var(--color-text-secondary); font-size: var(--size-label); line-height: var(--line-height-label); max-width: 720px; }
+
+  .ramp { display: flex; height: 96px; border-radius: var(--radius-md); border: 1px solid var(--color-border-default); overflow: hidden; }
+  .ramp .chip { flex: 1 1 0; border-radius: var(--radius-none); }
+  .chip { display: flex; flex-direction: column; justify-content: space-between; padding: var(--space-8); min-width: 0; }
+  .chip .hex { font-size: 14px; line-height: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .chip.tone-light .step { color: var(--neutral-600); }
+  .chip.tone-light .hex { color: var(--neutral-950); }
+  .chip.tone-mid .step, .chip.tone-mid .hex { color: var(--neutral-950); }
+  .chip.tone-dark .step, .chip.tone-dark .hex { color: var(--white); }
+  .chip-row { display: flex; gap: var(--space-16); }
+  .chip-row .chip { flex: 1 1 0; height: 96px; border-radius: var(--radius-md); border: 1px solid var(--color-border-default); }
+
+  .type-list { display: flex; flex-direction: column; }
+  .type-step { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-16) 0; border-top: 1px solid var(--color-border-default); }
+  .type-step .job { font-size: var(--size-label); line-height: var(--line-height-label); color: var(--color-text-primary); }
+  .cap { color: var(--color-text-muted); }
+  .sample { color: var(--color-text-primary); overflow-wrap: anywhere; }
+
+  .space-list { display: flex; flex-direction: column; gap: var(--space-8); }
+  .space-row { display: flex; align-items: center; gap: var(--space-16); }
+  .space-bar { height: 16px; background: var(--color-accent-default); flex: none; }
+  .space-row span { color: var(--color-text-secondary); }
+
+  .shadow-row { display: flex; gap: var(--space-16); height: 96px; }
+  .shadow-card { flex: 1 1 0; border-radius: var(--radius-md); background: var(--color-bg-elevated); display: flex; align-items: flex-end; padding: var(--space-8); color: var(--color-text-secondary); }
+
+  .radius-row { display: flex; gap: var(--space-16); height: 96px; }
+  .radius-box { border: 1px solid var(--color-border-default); background: var(--color-bg-elevated); display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary); }
+  .radius-box.square { width: 96px; flex: none; }
+  .radius-box.share { flex: 1 1 0; }
+  .nested-outer { padding: var(--space-24); border-radius: var(--radius-nested); background: var(--color-bg-elevated); border: 1px solid var(--color-border-default); }
+  .nested-inner { height: 64px; border-radius: var(--radius-sm); background: var(--color-bg-sunken); display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary); }
+
+  .components { display: flex; flex-direction: column; gap: var(--space-48); }
+  .btn-rows { display: flex; flex-direction: column; gap: var(--space-16); }
+  .btn-row { display: flex; gap: var(--space-16); flex-wrap: wrap; }
+  .cell { display: flex; flex-direction: column; gap: var(--space-8); align-items: flex-start; }
+  .state { color: var(--color-text-muted); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-8);
+    height: var(--control-height); padding: 0 var(--space-16);
+    border-radius: var(--radius-sm); border: 1px solid transparent;
+    font: var(--weight-strong) var(--size-label)/var(--line-height-label) var(--family-body);
+    cursor: pointer; white-space: nowrap; width: var(--btn-w, auto);
+    transition: background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard), outline-offset var(--duration-fast) var(--ease-standard);
+  }
+  .btn svg { width: var(--icon-size); height: var(--icon-size); }
+  .btn.primary { background: var(--button-primary-bg); color: var(--button-primary-label); }
+  .btn.primary:hover, .btn.primary.is-hover { background: var(--button-primary-bg-hover); }
+  .btn.primary:active, .btn.primary.is-pressed { background: var(--button-primary-bg-pressed); }
+  .btn.secondary { background: var(--button-secondary-bg); color: var(--button-secondary-label); border-color: var(--button-secondary-border); }
+  .btn.secondary:hover, .btn.secondary.is-hover { border-color: var(--button-secondary-border-hover); }
+  .btn.secondary:active, .btn.secondary.is-pressed { background: var(--color-bg-sunken); }
+  .btn.ghost { background: transparent; color: var(--button-ghost-label); }
+  .btn.ghost:hover, .btn.ghost.is-hover { background: var(--color-bg-elevated); }
+  .btn.ghost:active, .btn.ghost.is-pressed { background: var(--color-bg-sunken); }
+  .btn:focus-visible, .btn.is-focus { outline: 2px solid var(--button-focus-border); outline-offset: 2px; }
+  .btn.is-disabled, .btn.is-disabled:hover { background: var(--control-bg-disabled); color: var(--control-text-disabled); border-color: transparent; cursor: not-allowed; }
+  .btn.is-loading .label, .btn.is-loading .right { display: none; }
+  .btn.is-loading { cursor: progress; }
+  .btn.is-loading .left { animation: spin 0.9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .btn.is-loading .left { animation-duration: 2.4s; } }
+
+  .field-grid { display: grid; grid-template-columns: repeat(3, 320px); gap: var(--space-24) var(--space-32); }
+  @media (max-width: 1180px) { .field-grid { grid-template-columns: repeat(auto-fill, 320px); } }
+  .field { display: flex; flex-direction: column; gap: var(--space-8); width: 320px; }
+  .field .flabel { font-size: var(--size-label); line-height: var(--line-height-label); font-weight: var(--weight-strong); color: var(--color-text-primary); }
+  .field .help { color: var(--color-text-secondary); }
+  .field .err { color: var(--field-message-danger); }
+  .field.is-disabled .flabel, .field.is-disabled .help { color: var(--control-text-disabled); }
+  .control { display: flex; align-items: center; gap: var(--space-8); height: var(--control-height); padding: 0 var(--space-12); background: var(--field-bg); border: 1px solid var(--field-border); border-radius: var(--radius-sm); transition: border-color var(--duration-fast) var(--ease-standard); }
+  .control input { flex: 1; min-width: 0; border: 0; background: transparent; outline: none; font: var(--weight-regular) var(--size-label)/var(--line-height-label) var(--family-body); color: var(--field-text); }
+  .control input::placeholder { color: var(--field-placeholder); }
+  .control:hover, .control.is-hover { border-color: var(--field-border-hover); }
+  .control:focus-within, .control.is-focus { border: 2px solid var(--field-border-focus); padding: 0 calc(var(--space-12) - 1px); }
+  .control.is-disabled, .control.is-disabled:hover { background: var(--control-bg-disabled); border-color: transparent; }
+  .control.is-disabled input, .control.is-disabled input::placeholder { color: var(--control-text-disabled); }
+  .control.is-error, .control.is-error:hover { background: var(--field-bg-danger); border-color: var(--field-border-danger); }
+
+  .card { width: 320px; background: var(--card-bg); box-shadow: var(--shadow-md); display: flex; flex-direction: column; transition: transform var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard); }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .card .text { display: flex; flex-direction: column; gap: var(--space-8); }
+  .card h3 { font-family: var(--family-display); font-weight: var(--weight-strong); font-size: var(--size-h5); line-height: var(--line-height-h5); letter-spacing: var(--tracking-h5, 0); }
+  .card p { color: var(--color-text-secondary); }
+  .card .img { background: var(--color-bg-sunken); }
+  /* Sharp system: full-bleed image, card radius md */
+  .card.bleed { border-radius: var(--radius-md); overflow: hidden; }
+  .card.bleed .img { aspect-ratio: 4 / 3; border-radius: var(--radius-none); }
+  .card.bleed .text { padding: var(--space-16) var(--space-24) var(--space-24); }
+  /* Soft system: inset image, nested radius */
+  .card.inset { border-radius: var(--radius-nested); padding: var(--space-24); gap: var(--space-16); }
+  .card.inset .img { aspect-ratio: 16 / 10; border-radius: var(--radius-sm); }
+
+  .badges { display: flex; gap: var(--space-8); flex-wrap: wrap; }
+  .badge { display: inline-flex; padding: var(--space-4) var(--space-8); border-radius: var(--radius-full); font-family: var(--family-mono, var(--family-body)); font-size: var(--size-caption); line-height: var(--line-height-caption); letter-spacing: var(--tracking-caption, 0); }
+  .badge.success { background: var(--color-bg-success); color: var(--color-text-success); }
+  .badge.warning { background: var(--color-bg-warning); color: var(--color-text-warning); }
+  .badge.danger { background: var(--color-bg-danger); color: var(--color-text-danger); }
+  .badge.info { background: var(--color-bg-info); color: var(--color-text-info); }
+
+  .icon-sets { display: flex; flex-direction: column; gap: var(--space-16); }
+  .icon-set { display: flex; align-items: center; gap: var(--space-16); color: var(--color-text-primary); }
+  .icon-set .name { width: 120px; color: var(--color-text-muted); }
+  hr { border: 0; border-top: 1px solid var(--color-border-default); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Lucide icons (ISC), https://lucide.dev -->
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+</svg>
+
+<main class="page">
+  <div class="topbar">
+    <span class="meta" id="meta"></span>
+    <button class="btn secondary" id="theme" type="button" style="width:auto"></button>
+  </div>
+
+  <section>
+    <div class="header page-title"><h1>Style guide</h1><p id="intro"></p></div>
+  </section>
+
+  <section>
+    <div class="header"><h2>Brand Palette</h2><p id="brand-job"></p></div>
+    <div class="ramp" id="brand-ramp"></div>
+  </section>
+
+  <section>
+    <div class="header"><h2>Neutral Palette</h2><p id="neutral-job"></p></div>
+    <div class="ramp" id="neutral-ramp"></div>
+  </section>
+
+  <section>
+    <div class="header"><h2>Semantic Tokens</h2><p>Fill colors only. Text, strokes and shadows live with the components that use them.</p></div>
+    <div class="chip-row" id="semantic-fills"></div>
+    <div class="chip-row" id="semantic-status"></div>
+  </section>
+
+  <section>
+    <div class="header"><h2>Typography</h2><p id="type-intro"></p></div>
+    <div class="type-list" id="type-list"></div>
+  </section>
+
+  <section>
+    <div class="header"><h2>Spacing</h2><p>A 4-based scale. Each step has one job.</p></div>
+    <div class="space-list" id="space-list"></div>
+  </section>
+
+  <section>
+    <div class="header"><h2>Shadows</h2><p>Five elevations. Each has a soft drop and a 1px top highlight; on Dark the highlight is what you see.</p></div>
+    <div class="shadow-row" id="shadows"></div>
+  </section>
+
+  <section>
+    <div class="header"><h2>Border Radius</h2><p id="radius-job"></p></div>
+    <div class="radius-row" id="radius-row"></div>
+    <div class="nested-outer"><div class="nested-inner" id="nested-note"></div></div>
+  </section>
+
+  <hr>
+
+  <div class="components">
+    <h2 class="comp-title">Components</h2>
+    <div class="btn-rows" id="buttons" aria-label="Button: Style × State"></div>
+    <div class="field-grid" id="fields" aria-label="Text field: State"></div>
+    <div class="cell" id="card-cell"></div>
+    <div class="cell">
+      <div class="badges">
+        <span class="badge success">Success</span><span class="badge warning">Warning</span><span class="badge danger">Danger</span><span class="badge info">Info</span>
+      </div>
+      <span class="state">badge · tone</span>
+    </div>
+    <div class="icon-sets" id="icons"></div>
+  </div>
+</main>
+
+<script>
+  const S = JSON.parse(document.getElementById('system').textContent);
+  const root = document.documentElement;
+  const $ = id => document.getElementById(id);
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const css = v => getComputedStyle(root).getPropertyValue(v).trim();
+  const cap = t => t.charAt(0).toUpperCase() + t.slice(1);
+
+  // Head: fonts, title, default theme
+  if (S.fontsHref) document.head.appendChild(Object.assign(document.createElement('link'), { rel: 'stylesheet', href: S.fontsHref }));
+  document.title = 'Style guide — ' + S.title;
+  root.dataset.theme = S.defaultTheme;
+
+  $('meta').textContent = `${S.title} · input ${S.input} · ${cap(S.defaultTheme)} first`;
+  $('intro').textContent = S.intro;
+  $('brand-job').textContent = S.brand.job;
+  $('neutral-job').textContent = S.neutralJob;
+  $('type-intro').textContent = S.typeIntro;
+  $('radius-job').textContent = S.radiusJob;
+  $('nested-note').textContent = S.nestedNote;
+
+  const chip = (label, bg, textVar) =>
+    `<div class="chip"${textVar ? ` data-text="${textVar}"` : ''} style="background:var(${bg})"><span class="step">${esc(label)}</span><span class="hex"></span></div>`;
+
+  $('brand-ramp').innerHTML = S.brand.chips.map(c => chip(c.label, c.token)).join('');
+  $('neutral-ramp').innerHTML = [50,100,200,300,400,500,600,700,800,900,950].map(s => chip(String(s), `--neutral-${s}`)).join('');
+  $('semantic-fills').innerHTML = [
+    ['surface','--color-bg-surface'], ['elevated','--color-bg-elevated'], ['sunken','--color-bg-sunken'], ['disabled','--color-bg-disabled'],
+    ['accent','--color-accent-default'], ['accent hover','--color-accent-hover'], ['accent pressed','--color-accent-pressed'],
+  ].map(([l, t]) => chip(l, t)).join('');
+  $('semantic-status').innerHTML = ['danger','success','warning','info']
+    .map(t => chip(t, `--color-bg-${t}`, `--color-text-${t}`)).join('');
+
+  // Typography: one frame per step, each screen endpoint with its caption
+  const px = v => css(v).replace('px', '');
+  $('type-list').innerHTML = S.type.map(t => {
+    const one = scr => {
+      const size = S.screens.length > 1 ? `--size-${t.step}-${scr}` : `--size-${t.step}`;
+      const lh = S.screens.length > 1 ? `--line-height-${t.step}-${scr}` : `--line-height-${t.step}`;
+      const name = S.screens.length > 1 ? `${t.step}/${scr}` : t.step;
+      return `<div class="sample" style="font-family:var(--family-${t.family});font-weight:var(--weight-${t.weight});font-size:var(${size});line-height:var(${lh});letter-spacing:var(--tracking-${t.step}, 0)">${esc(t.sample)}</div>
+        <div class="cap">${name} · ${esc(S.families[t.family])} ${css('--weight-' + t.weight)} · ${px(size)} / ${px(lh)} · ${css('--tracking-' + t.step) || '0'}</div>`;
+    };
+    return `<div class="type-step"><div class="job">${esc(t.job)}</div>${S.screens.map(one).join('')}</div>`;
+  }).join('');
+
+  $('space-list').innerHTML = S.space.map(([n, job]) =>
+    `<div class="space-row"><div class="space-bar" style="width:var(--space-${n})"></div><span>${n} — ${esc(job)}</span></div>`).join('');
+
+  $('shadows').innerHTML = ['sm','md','lg','xl','2xl'].map(s => `<div class="shadow-card" style="box-shadow:var(--shadow-${s})">${s}</div>`).join('');
+
+  $('radius-row').innerHTML = `<div class="radius-box square" style="border-radius:var(--radius-none)">none</div>` +
+    S.radiusSteps.map(([n, v]) => `<div class="radius-box share" style="border-radius:var(--radius-${n})">${n} / ${v}px</div>`).join('') +
+    `<div class="radius-box square" style="border-radius:var(--radius-full)">full</div>`;
+
+  // Buttons: one row per style, states left to right, each captioned
+  const states = ['default','hover','pressed','focus','disabled','loading'];
+  $('buttons').innerHTML = ['primary','secondary','ghost'].map(st => `<div class="btn-row">${states.map(sa =>
+    `<div class="cell"><button type="button" class="btn ${st} is-${sa}" ${sa === 'disabled' ? 'disabled' : ''}>
+      <svg class="left"><use href="#i-${sa === 'loading' ? 'loader' : 'search'}"/></svg><span class="label">${esc(S.buttonLabel)}</span><svg class="right"><use href="#i-plus"/></svg>
+    </button><span class="state">${st} · ${sa}</span></div>`).join('')}</div>`).join('');
+
+  // Fields
+  const F = S.field;
+  $('fields').innerHTML = [['default',''],['hover',''],['focus',''],['filled',F.value],['disabled',F.value],['error',F.value]].map(([s, val]) =>
+    `<div class="cell"><label class="field is-${s}">
+      <span class="flabel">${esc(F.label)}</span>
+      <span class="control is-${s}"><input placeholder="${esc(F.placeholder)}" value="${esc(val)}" ${s === 'disabled' ? 'disabled' : ''}></span>
+      ${s === 'error' ? `<span class="err">${esc(F.error)}</span>` : `<span class="help">${esc(F.help)}</span>`}
+    </label><span class="state">text field · ${s}</span></div>`).join('');
+
+  // Card
+  $('card-cell').innerHTML = `<article class="card ${S.card.image}"><div class="img"></div>
+    <div class="text"><h3>${esc(S.card.title)}</h3><p>${esc(S.card.body)}</p></div></article>
+    <span class="state">card · hover lifts by 2px</span>`;
+
+  $('icons').innerHTML = [['Search','search'],['Plus','plus'],['Loader','loader']].map(([n, id]) =>
+    `<div class="icon-set"><span class="name">Icon / ${n}</span>${[16,20,24].map(s => `<svg width="${s}" height="${s}"><use href="#i-${id}"/></svg>`).join('')}</div>`).join('');
+
+  // Equal button width = widest variant
+  function sizeButtons() {
+    root.style.removeProperty('--btn-w');
+    let w = 0;
+    document.querySelectorAll('#buttons .btn').forEach(b => { w = Math.max(w, b.getBoundingClientRect().width); });
+    root.style.setProperty('--btn-w', Math.ceil(w) + 'px');
+  }
+
+  // Resolve any CSS color (oklch included) to sRGB through a 1px canvas
+  const cx = Object.assign(document.createElement('canvas'), { width: 1, height: 1 }).getContext('2d', { willReadFrequently: true });
+  function rgba(color) {
+    cx.clearRect(0, 0, 1, 1); cx.fillStyle = '#000'; cx.fillStyle = color; cx.fillRect(0, 0, 1, 1);
+    const [r, g, b, a] = cx.getImageData(0, 0, 1, 1).data; return [r, g, b, a / 255];
+  }
+  const h2 = n => Math.round(n).toString(16).padStart(2, '0');
+  const lum = ([r, g, b]) => [r, g, b].map(n => { n /= 255; return n <= 0.03928 ? n / 12.92 : ((n + 0.055) / 1.055) ** 2.4; })
+    .reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0);
+  function paintChips() {
+    document.querySelectorAll('.chip').forEach(ch => {
+      const c = rgba(getComputedStyle(ch).backgroundColor);
+      ch.querySelector('.hex').textContent = ('#' + h2(c[0]) + h2(c[1]) + h2(c[2]) + (c[3] < 1 ? h2(c[3] * 255) : '')).toUpperCase();
+      ch.classList.remove('tone-light', 'tone-mid', 'tone-dark');
+      if (ch.dataset.text) ch.querySelectorAll('.step,.hex').forEach(t => t.style.color = `var(${ch.dataset.text})`);
+      else { const L = lum(c); ch.classList.add(L > 0.5 ? 'tone-light' : L > 0.18 ? 'tone-mid' : 'tone-dark'); }
+    });
+  }
+
+  // Theme switch (hidden when the system has one theme)
+  const btn = $('theme');
+  function labelTheme() {
+    const other = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    btn.innerHTML = `<svg class="left"><use href="#i-${other === 'light' ? 'sun' : 'moon'}"/></svg><span class="label">${cap(other)} theme</span>`;
+  }
+  if (S.themes.length < 2) btn.hidden = true;
+  btn.addEventListener('click', () => { root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark'; labelTheme(); paintChips(); });
+  labelTheme();
+  paintChips();
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { sizeButtons(); paintChips(); });
+</script>
+</body>
+</html>

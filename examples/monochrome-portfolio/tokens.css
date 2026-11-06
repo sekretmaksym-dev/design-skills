@@ -1,0 +1,225 @@
+/*
+  Monochrome portfolio tokens. Input #000000 (achromatic), so there is no brand ramp.
+  :root is the Dark theme (shown first). [data-theme="light"] overrides the color roles.
+  Colors are OKLCH; the hex in each comment is the sRGB value.
+  Fonts (from research: neo-grotesk headlines, mono meta): Host Grotesk, IBM Plex Mono.
+*/
+
+:root, [data-theme="dark"] {
+  color-scheme: dark;
+
+  /* ---------- Primitives: raw ramp steps. Do not apply to a layer. ---------- */
+  --brand-base: oklch(0 0 0);            /* #000000 */
+
+  --neutral-50:  oklch(0.985 0 0);       /* #fafafa */
+  --neutral-100: oklch(0.970 0 0);       /* #f5f5f5 */
+  --neutral-200: oklch(0.922 0 0);       /* #e5e5e5 */
+  --neutral-300: oklch(0.870 0 0);       /* #d4d4d4 */
+  --neutral-400: oklch(0.708 0 0);       /* #a1a1a1 */
+  --neutral-500: oklch(0.556 0 0);       /* #737373 */
+  --neutral-600: oklch(0.439 0 0);       /* #525252 */
+  --neutral-700: oklch(0.371 0 0);       /* #404040 */
+  --neutral-800: oklch(0.269 0 0);       /* #262626 */
+  --neutral-900: oklch(0.205 0 0);       /* #171717 */
+  --neutral-950: oklch(0.145 0 0);       /* #0a0a0a */
+
+  --white: oklch(1 0 0);                 /* #ffffff */
+  --black: oklch(0 0 0);                 /* #000000 */
+
+  /* Status hues, chroma lowered for a monochrome system. 500 is never a text color. */
+  --red-400: oklch(0.74 0.11 25);        /* #e88f87 */
+  --red-500: oklch(0.63 0.13 25);        /* #cc6660 */
+  --red-600: oklch(0.54 0.12 25);        /* #a94f4a */
+  --red-700: oklch(0.48 0.10 25);        /* #8d4540 */
+  --red-tint: oklch(0.63 0.13 25 / 0.12);
+  --green-400: oklch(0.74 0.11 150);     /* #76be86 */
+  --green-500: oklch(0.63 0.13 150);     /* #459f5d */
+  --green-700: oklch(0.48 0.10 150);     /* #2c6d3e */
+  --green-tint: oklch(0.63 0.13 150 / 0.12);
+  --amber-400: oklch(0.74 0.11 70);      /* #d79e59 */
+  --amber-500: oklch(0.63 0.13 70);      /* #ba7917 */
+  --amber-700: oklch(0.48 0.10 70);      /* #81520a */
+  --amber-tint: oklch(0.63 0.13 70 / 0.12);
+  --blue-400: oklch(0.74 0.11 255);      /* #7aaeef */
+  --blue-500: oklch(0.63 0.13 255);      /* #4f8bd6 */
+  --blue-700: oklch(0.48 0.10 255);      /* #345f95 */
+  --blue-tint: oklch(0.63 0.13 255 / 0.12);
+
+  /* ---------- Color: Dark ---------- */
+  --color-bg-surface: var(--neutral-950);      /* Page background */
+  --color-bg-elevated: var(--neutral-900);     /* Cards and menus */
+  --color-bg-sunken: var(--black);             /* Inputs */
+  --color-bg-disabled: var(--neutral-800);     /* Disabled controls */
+  --color-text-primary: var(--neutral-50);     /* Body and titles */
+  --color-text-secondary: var(--neutral-300);  /* Supporting text, 12:1 */
+  --color-text-muted: var(--neutral-400);      /* Placeholders, captions, meta. 4.5:1 or more on every surface */
+  --color-text-disabled: var(--neutral-600);   /* Disabled labels */
+  --color-text-on-accent: var(--neutral-950);  /* Label on the primary button */
+  --color-border-default: var(--neutral-800);  /* Quiet dividers. Decorative, no contrast minimum */
+  --color-border-strong: var(--neutral-500);   /* Field and secondary button edges, 3:1 or more */
+  --color-border-hover: var(--neutral-400);    /* Field and secondary button edge on hover */
+  --color-border-focus: var(--neutral-50);     /* Keyboard focus ring: the accent, outside with a 2px gap */
+  --color-accent-default: var(--neutral-50);   /* Primary button fill: white on Dark */
+  --color-accent-hover: var(--neutral-200);    /* Primary button hover */
+  --color-accent-pressed: var(--neutral-300);  /* Primary button pressed */
+  --color-bg-danger: var(--red-tint);          /* Error field background */
+  --color-border-danger: var(--red-500);       /* Error field border */
+  --color-text-danger: var(--red-400);         /* Error message */
+  --color-bg-success: var(--green-tint);       /* Success badge */
+  --color-text-success: var(--green-400);      /* Success badge label */
+  --color-bg-warning: var(--amber-tint);       /* Warning badge */
+  --color-text-warning: var(--amber-400);      /* Warning badge label */
+  --color-bg-info: var(--blue-tint);           /* Info badge */
+  --color-text-info: var(--blue-400);          /* Info badge label */
+  --color-highlight: oklch(1 0 0 / 0.08);      /* Top edge light on raised surfaces. Carries elevation on Dark */
+  --color-shadow: oklch(0 0 0 / 0.5);          /* Shadow tint */
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg-surface: var(--neutral-50);       /* Page background, one step off white so cards read as raised */
+  --color-bg-elevated: var(--white);           /* Cards and menus */
+  --color-bg-sunken: var(--neutral-100);       /* Inputs */
+  --color-bg-disabled: var(--neutral-200);     /* Disabled controls */
+  --color-text-primary: var(--neutral-950);    /* Body and titles */
+  --color-text-secondary: var(--neutral-700);  /* Supporting text, 9.5:1 */
+  --color-text-muted: var(--neutral-600);      /* Placeholders, captions, meta. 500 fails 4.5:1 on inputs */
+  --color-text-disabled: var(--neutral-400);   /* Disabled labels */
+  --color-text-on-accent: var(--white);        /* Label on the primary button */
+  --color-border-default: var(--neutral-200);  /* Quiet dividers */
+  --color-border-strong: var(--neutral-500);   /* Field and secondary button edges, 4.3:1 */
+  --color-border-hover: var(--neutral-700);    /* Field and secondary button edge on hover */
+  --color-border-focus: var(--neutral-900);    /* Keyboard focus ring */
+  --color-accent-default: var(--neutral-900);  /* Primary button fill: black on Light */
+  --color-accent-hover: var(--neutral-800);    /* Primary button hover */
+  --color-accent-pressed: var(--neutral-950);  /* Primary button pressed */
+  --color-bg-danger: var(--red-tint);
+  --color-border-danger: var(--red-600);
+  --color-text-danger: var(--red-700);
+  --color-bg-success: var(--green-tint);
+  --color-text-success: var(--green-700);
+  --color-bg-warning: var(--amber-tint);
+  --color-text-warning: var(--amber-700);
+  --color-bg-info: var(--blue-tint);
+  --color-text-info: var(--blue-700);
+  --color-highlight: oklch(1 0 0 / 0.6);
+  --color-shadow: oklch(0.205 0 0 / 0.1);
+}
+
+:root {
+  /* ---------- Shadows: top highlight + soft drop. On Dark the highlight does the work. ---------- */
+  --shadow-sm:  inset 0 1px 0 var(--color-highlight), 0 1px 2px var(--color-shadow);
+  --shadow-md:  inset 0 1px 0 var(--color-highlight), 0 4px 12px var(--color-shadow);
+  --shadow-lg:  inset 0 1px 0 var(--color-highlight), 0 12px 32px var(--color-shadow);
+  --shadow-xl:  inset 0 1px 0 var(--color-highlight), 0 20px 48px var(--color-shadow);
+  --shadow-2xl: inset 0 1px 0 var(--color-highlight), 0 32px 72px var(--color-shadow);
+
+  /* ---------- Component tokens (alias Color) ---------- */
+  --button-primary-bg: var(--color-accent-default);
+  --button-primary-bg-hover: var(--color-accent-hover);
+  --button-primary-bg-pressed: var(--color-accent-pressed);
+  --button-primary-label: var(--color-text-on-accent);
+  --button-secondary-bg: var(--color-bg-elevated);
+  --button-secondary-border: var(--color-border-strong);
+  --button-secondary-border-hover: var(--color-border-hover);
+  --button-secondary-label: var(--color-text-primary);
+  --button-ghost-label: var(--color-text-primary);
+  --button-focus-border: var(--color-border-focus);
+  --field-bg: var(--color-bg-sunken);
+  --field-bg-danger: var(--color-bg-danger);
+  --field-border: var(--color-border-strong);
+  --field-border-hover: var(--color-border-hover);
+  --field-border-focus: var(--color-border-focus);
+  --field-border-danger: var(--color-border-danger);
+  --field-text: var(--color-text-primary);
+  --field-placeholder: var(--color-text-muted);
+  --field-message-danger: var(--color-text-danger);
+  --control-bg-disabled: var(--color-bg-disabled);
+  --control-text-disabled: var(--color-text-disabled);
+  --card-bg: var(--color-bg-elevated);
+
+  /* ---------- Spacing ---------- */
+  --space-4: 4px;      /* Badge vertical padding */
+  --space-8: 8px;      /* Icon to label; title to body */
+  --space-12: 12px;    /* Field horizontal padding */
+  --space-16: 16px;    /* Button horizontal padding; image to text in a card */
+  --space-24: 24px;    /* Card padding */
+  --space-32: 32px;    /* Gap between cards */
+  --space-48: 48px;    /* Gap between page sections */
+  --space-64: 64px;    /* Page padding on desktop */
+  --space-96: 96px;    /* Space above a case study block */
+  --space-128: 128px;  /* Space around the hero */
+
+  /* ---------- Radius ---------- */
+  --radius-none: 0px;     /* Images, full-bleed blocks */
+  --radius-sm: 4px;       /* Buttons, fields */
+  --radius-md: 8px;       /* Cards, chips */
+  --radius-lg: 12px;      /* Panels */
+  --radius-full: 9999px;  /* Badges */
+  --radius-nested: calc(var(--radius-sm) + var(--space-24)); /* Inset content only: outer = inner + padding (4 + 24) */
+
+  /* ---------- Typography ---------- */
+  --family-display: "Host Grotesk", "Helvetica Neue", Arial, sans-serif;  /* Headings and body */
+  --family-body: "Host Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --family-mono: "IBM Plex Mono", ui-monospace, monospace;                 /* Captions and meta */
+  --weight-regular: 400;
+  --weight-strong: 500;
+
+  /* Endpoints: mobile at 375px, desktop at 1280px. Both are multiples of 4. */
+  --size-h1-desktop: 120px;  --line-height-h1-desktop: 112px;  --tracking-h1: -0.04em;  /* Hero name or statement */
+  --size-h1-mobile: 56px;    --line-height-h1-mobile: 56px;
+  --size-h2-desktop: 72px;   --line-height-h2-desktop: 72px;   --tracking-h2: -0.03em;  /* Section title */
+  --size-h2-mobile: 40px;    --line-height-h2-mobile: 44px;
+  --size-h3-desktop: 48px;   --line-height-h3-desktop: 52px;   --tracking-h3: -0.02em;  /* Case study title */
+  --size-h3-mobile: 32px;    --line-height-h3-mobile: 36px;
+  --size-h4-desktop: 28px;   --line-height-h4-desktop: 36px;   --tracking-h4: -0.01em;  /* Subsection title */
+  --size-h4-mobile: 24px;    --line-height-h4-mobile: 32px;
+  --size-h5-desktop: 24px;   --line-height-h5-desktop: 32px;   --tracking-h5: -0.01em;  /* Card title */
+  --size-h5-mobile: 20px;    --line-height-h5-mobile: 28px;
+  --size-body-desktop: 18px; --line-height-body-desktop: 28px; --tracking-body: 0em;    /* Reading text */
+  --size-body-mobile: 16px;  --line-height-body-mobile: 24px;
+  --size-label-desktop: 14px; --line-height-label-desktop: 20px; --tracking-label: 0em; /* Buttons, fields, nav */
+  --size-label-mobile: 14px;  --line-height-label-mobile: 20px;
+  --size-caption-desktop: 12px; --line-height-caption-desktop: 16px; --tracking-caption: 0.02em; /* Meta, help text (mono) */
+  --size-caption-mobile: 12px;  --line-height-caption-mobile: 16px;
+
+  /* Fluid: scales smoothly from the mobile endpoint to the desktop endpoint. */
+  --size-h1: clamp(56px, 29.48px + 7.072vw, 120px);
+  --line-height-h1: clamp(56px, 32.80px + 6.188vw, 112px);
+  --size-h2: clamp(40px, 26.74px + 3.536vw, 72px);
+  --line-height-h2: clamp(44px, 32.40px + 3.094vw, 72px);
+  --size-h3: clamp(32px, 25.37px + 1.768vw, 48px);
+  --line-height-h3: clamp(36px, 29.37px + 1.768vw, 52px);
+  --size-h4: clamp(24px, 22.34px + 0.442vw, 28px);
+  --line-height-h4: clamp(32px, 30.34px + 0.442vw, 36px);
+  --size-h5: clamp(20px, 18.34px + 0.442vw, 24px);
+  --line-height-h5: clamp(28px, 26.34px + 0.442vw, 32px);
+  --size-body: clamp(16px, 15.17px + 0.221vw, 18px);
+  --line-height-body: clamp(24px, 22.34px + 0.442vw, 28px);
+  --size-label: 14px;
+  --line-height-label: 20px;
+  --size-caption: 12px;
+  --line-height-caption: 16px;
+
+  --icon-size: 20px;      /* Equals the label line height */
+  --control-height: 44px;
+
+  /* ---------- Motion ---------- */
+  --duration-instant: 80ms;   /* Color change on hover */
+  --duration-fast: 160ms;     /* Buttons, fields, focus */
+  --duration-base: 240ms;     /* Cards, menus, theme switch */
+  --duration-slow: 400ms;     /* Section reveal on scroll */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);  /* Moves that start and end on screen */
+  --ease-enter: cubic-bezier(0, 0, 0, 1);       /* Things arriving */
+  --ease-exit: cubic-bezier(0.3, 0, 1, 1);      /* Things leaving */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0ms;
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}

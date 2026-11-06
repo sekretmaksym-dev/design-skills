@@ -1,0 +1,204 @@
+/*
+  SaaS analytics tokens. Input #E8553F (mid, brand/500). Light first.
+  :root is the Light theme. [data-theme="dark"] overrides the color roles.
+  Colors are OKLCH; the hex in each comment is the sRGB value.
+  Fonts (from research: Stripe, Plane, Searchable use a neutral grotesk; Mintlify sets data in mono):
+  Hanken Grotesk, JetBrains Mono.
+*/
+
+:root, [data-theme="light"] {
+  color-scheme: light;
+
+  /* ---------- Primitives: raw ramp steps. Do not apply to a layer. ---------- */
+  --white: oklch(1 0 0);                 /* #ffffff */
+  --black: oklch(0 0 0);                 /* #000000 */
+  --brand-50: oklch(0.975 0.022 31.1);   /* #fff2ee */
+  --brand-100: oklch(0.945 0.041 31.1);   /* #ffe3dc */
+  --brand-200: oklch(0.890 0.074 31.1);   /* #ffc9bd */
+  --brand-300: oklch(0.820 0.115 31.1);   /* #ffa896 */
+  --brand-400: oklch(0.740 0.158 31.1);   /* #ff806b */
+  --brand-500: oklch(0.643 0.186 31.1);   /* #e8553f input */
+  --brand-600: oklch(0.560 0.177 29.1);   /* #c73d30 */
+  --brand-700: oklch(0.480 0.158 27.1);   /* #a42b27 */
+  --brand-800: oklch(0.410 0.134 25.1);   /* #842122 */
+  --brand-900: oklch(0.350 0.112 23.1);   /* #691a1d */
+  --brand-950: oklch(0.260 0.093 21.1);   /* #47070f */
+  --neutral-50: oklch(0.985 0.003 31.1); /* #fcf9f9 */
+  --neutral-100: oklch(0.968 0.003 31.1); /* #f6f4f3 */
+  --neutral-200: oklch(0.922 0.003 31.1); /* #e7e4e4 */
+  --neutral-300: oklch(0.870 0.003 31.1); /* #d6d3d3 */
+  --neutral-400: oklch(0.708 0.008 31.1); /* #a69f9e */
+  --neutral-500: oklch(0.556 0.008 31.1); /* #787270 */
+  --neutral-600: oklch(0.446 0.008 31.1); /* #585351 */
+  --neutral-700: oklch(0.374 0.008 31.1); /* #453f3e */
+  --neutral-800: oklch(0.274 0.008 31.1); /* #2b2625 */
+  --neutral-900: oklch(0.210 0.008 31.1); /* #1c1716 */
+  --neutral-950: oklch(0.150 0.008 31.1); /* #0e0a09 */
+  --red-400: oklch(0.710 0.170 22.0);   /* #f96f70 */
+  --red-500: oklch(0.637 0.237 25.0);   /* #fb2c38 */
+  --red-600: oklch(0.577 0.245 27.0);   /* #e7000f */
+  --red-700: oklch(0.505 0.213 27.0);   /* #c1000c */
+  --red-tint: oklch(0.637 0.237 25 / 0.12);
+  --green-400: oklch(0.792 0.209 152.0);  /* #00df73 */
+  --green-500: oklch(0.723 0.219 150.0);  /* #00c952 */
+  --green-700: oklch(0.527 0.154 150.0);  /* #008235 */
+  --green-800: oklch(0.448 0.119 151.0);  /* #046630 */
+  --green-tint: oklch(0.723 0.219 150 / 0.12);
+  --amber-400: oklch(0.828 0.189 84.0);   /* #ffb900 */
+  --amber-500: oklch(0.769 0.188 70.0);   /* #fe9900 */
+  --amber-700: oklch(0.555 0.163 49.0);   /* #bb4d00 */
+  --amber-800: oklch(0.473 0.137 46.0);   /* #973c00 */
+  --amber-tint: oklch(0.769 0.188 70 / 0.12);
+  --blue-400: oklch(0.707 0.165 255.0);  /* #52a2ff */
+  --blue-500: oklch(0.623 0.214 259.0);  /* #2580ff */
+  --blue-700: oklch(0.488 0.243 264.0);  /* #1048e6 */
+  --blue-tint: oklch(0.623 0.214 259 / 0.12);
+
+  /* ---------- Color: Light ---------- */
+  --color-bg-surface: var(--neutral-50);        /* Page background */
+  --color-bg-elevated: var(--white);            /* Cards, panels, menus */
+  --color-bg-sunken: var(--neutral-100);        /* Inputs */
+  --color-bg-disabled: var(--neutral-200);      /* Disabled controls */
+  --color-text-primary: var(--neutral-950);     /* Body and titles */
+  --color-text-secondary: var(--neutral-700);   /* Supporting text */
+  --color-text-muted: var(--neutral-600);       /* Placeholders, captions, axis labels */
+  --color-text-disabled: var(--neutral-400);    /* Disabled labels */
+  --color-text-on-accent: var(--white);         /* Label on the primary button */
+  --color-border-default: var(--neutral-200);   /* Dividers, table rules */
+  --color-border-strong: var(--neutral-500);    /* Field and secondary button edges, 3:1 or more */
+  --color-border-hover: var(--neutral-700);     /* Field and secondary button edge on hover */
+  --color-border-focus: var(--neutral-950);      /* Keyboard focus ring. Neutral: the brand hue is too close to danger red */
+  --color-accent-default: var(--brand-600);    /* Primary button fill. brand/500 fails 4.5:1 with white */
+  --color-accent-hover: var(--brand-700);      /* Primary button hover */
+  --color-accent-pressed: var(--brand-800);    /* Primary button pressed */
+  --color-bg-danger: var(--red-tint);           /* Error field background */
+  --color-border-danger: var(--red-600);        /* Error field border */
+  --color-text-danger: var(--red-700);          /* Error message */
+  --color-bg-success: var(--green-tint);        /* Success badge */
+  --color-text-success: var(--green-800);       /* Success badge label. 700 fails 4.5:1 on its tint */
+  --color-bg-warning: var(--amber-tint);        /* Warning badge */
+  --color-text-warning: var(--amber-800);       /* Warning badge label. 700 fails 4.5:1 on its tint */
+  --color-bg-info: var(--blue-tint);            /* Info badge */
+  --color-text-info: var(--blue-700);           /* Info badge label */
+  --color-highlight: oklch(1 0 0 / 0.6);        /* Top edge light on raised surfaces */
+  --color-shadow: oklch(0.21 0.008 31.1 / 0.1);  /* Shadow tint */
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg-surface: var(--neutral-950);
+  --color-bg-elevated: var(--neutral-900);
+  --color-bg-sunken: var(--black);
+  --color-bg-disabled: var(--neutral-800);
+  --color-text-primary: var(--neutral-50);
+  --color-text-secondary: var(--neutral-300);
+  --color-text-muted: var(--neutral-400);
+  --color-text-disabled: var(--neutral-600);
+  --color-text-on-accent: var(--neutral-950);   /* Dark label: white fails on the lighter Dark accent */
+  --color-border-default: var(--neutral-800);
+  --color-border-strong: var(--neutral-500);
+  --color-border-hover: var(--neutral-400);
+  --color-border-focus: var(--neutral-50);
+  --color-accent-default: var(--brand-500);
+  --color-accent-hover: var(--brand-400);
+  --color-accent-pressed: var(--brand-300);
+  --color-bg-danger: var(--red-tint);
+  --color-border-danger: var(--red-500);
+  --color-text-danger: var(--red-400);
+  --color-bg-success: var(--green-tint);
+  --color-text-success: var(--green-400);
+  --color-bg-warning: var(--amber-tint);
+  --color-text-warning: var(--amber-400);
+  --color-bg-info: var(--blue-tint);
+  --color-text-info: var(--blue-400);
+  --color-highlight: oklch(1 0 0 / 0.08);
+  --color-shadow: oklch(0 0 0 / 0.5);
+}
+
+:root {
+  --shadow-sm:  inset 0 1px 0 var(--color-highlight), 0 1px 2px var(--color-shadow);
+  --shadow-md:  inset 0 1px 0 var(--color-highlight), 0 4px 12px var(--color-shadow);
+  --shadow-lg:  inset 0 1px 0 var(--color-highlight), 0 12px 32px var(--color-shadow);
+  --shadow-xl:  inset 0 1px 0 var(--color-highlight), 0 20px 48px var(--color-shadow);
+  --shadow-2xl: inset 0 1px 0 var(--color-highlight), 0 32px 72px var(--color-shadow);
+
+  /* ---------- Component tokens (alias Color) ---------- */
+  --button-primary-bg: var(--color-accent-default);
+  --button-primary-bg-hover: var(--color-accent-hover);
+  --button-primary-bg-pressed: var(--color-accent-pressed);
+  --button-primary-label: var(--color-text-on-accent);
+  --button-secondary-bg: var(--color-bg-elevated);
+  --button-secondary-border: var(--color-border-strong);
+  --button-secondary-border-hover: var(--color-border-hover);
+  --button-secondary-label: var(--color-text-primary);
+  --button-ghost-label: var(--color-text-primary);
+  --button-focus-border: var(--color-border-focus);
+  --field-bg: var(--color-bg-sunken);
+  --field-bg-danger: var(--color-bg-danger);
+  --field-border: var(--color-border-strong);
+  --field-border-hover: var(--color-border-hover);
+  --field-border-focus: var(--color-border-focus);
+  --field-border-danger: var(--color-border-danger);
+  --field-text: var(--color-text-primary);
+  --field-placeholder: var(--color-text-muted);
+  --field-message-danger: var(--color-text-danger);
+  --control-bg-disabled: var(--color-bg-disabled);
+  --control-text-disabled: var(--color-text-disabled);
+  --card-bg: var(--color-bg-elevated);
+
+  /* ---------- Spacing ---------- */
+  --space-4: 4px;      /* Badge vertical padding, icon to number */
+  --space-8: 8px;      /* Icon to label; title to body */
+  --space-12: 12px;    /* Field horizontal padding, table cell padding */
+  --space-16: 16px;    /* Button horizontal padding; image to text */
+  --space-24: 24px;    /* Card padding */
+  --space-32: 32px;    /* Gap between cards */
+  --space-48: 48px;    /* Gap between page sections */
+  --space-64: 64px;    /* Page padding */
+
+  /* ---------- Radius ---------- */
+  --radius-none: 0px;     /* Tables, full-bleed blocks */
+  --radius-sm: 6px;       /* Buttons, fields */
+  --radius-md: 8px;       /* Chips, menus */
+  --radius-lg: 12px;      /* Panels */
+  --radius-full: 9999px;  /* Badges */
+  --radius-nested: calc(var(--radius-sm) + var(--space-24)); /* Outer = inner + padding (6 + 24) */
+
+  /* ---------- Typography ---------- */
+  --family-display: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --family-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --family-mono: "JetBrains Mono", ui-monospace, monospace;    /* Captions, overlines, numbers in tables */
+  --weight-regular: 400;
+  --weight-strong: 600;
+
+  /* Desktop only: one fixed size per step. */
+  --size-h1: 32px;     --line-height-h1: 40px;     --tracking-h1: -0.02em;   /* Page title */
+  --size-h2: 24px;     --line-height-h2: 32px;     --tracking-h2: -0.01em;   /* Section title */
+  --size-h3: 20px;     --line-height-h3: 28px;     --tracking-h3: -0.01em;   /* Panel title */
+  --size-h4: 16px;     --line-height-h4: 24px;     --tracking-h4: 0em;       /* Group heading */
+  --size-h5: 14px;     --line-height-h5: 20px;     --tracking-h5: 0em;       /* Card title. Same size as body, set apart by weight */
+  --size-h6: 12px;     --line-height-h6: 16px;     --tracking-h6: 0.02em;    /* Table group, form section */
+  --size-body: 14px;   --line-height-body: 20px;   --tracking-body: 0em;     /* Reading text, table cells */
+  --size-body-sm: 12px; --line-height-body-sm: 16px; --tracking-body-sm: 0em; /* Dense tables, footnotes */
+  --size-label: 14px;  --line-height-label: 20px;  --tracking-label: 0em;    /* Field labels, nav */
+  --size-button: 14px; --line-height-button: 20px; --tracking-button: 0em;   /* Button labels */
+  --size-caption: 12px; --line-height-caption: 16px; --tracking-caption: 0em; /* Help text, axis labels (mono) */
+  --size-overline: 12px; --line-height-overline: 16px; --tracking-overline: 0.06em; /* Uppercase kicker above a metric (mono) */
+
+  --icon-size: 20px;      /* Equals the button line height */
+  --control-height: 44px;
+
+  /* ---------- Motion ---------- */
+  --duration-instant: 80ms;
+  --duration-fast: 160ms;
+  --duration-base: 240ms;
+  --duration-slow: 400ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.3, 0, 1, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration-instant: 0ms; --duration-fast: 0ms; --duration-base: 0ms; --duration-slow: 0ms; }
+}
