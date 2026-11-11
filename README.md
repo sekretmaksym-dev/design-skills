@@ -4,11 +4,30 @@ Agent skills for UX/UI designers who work with LLMs. They run in **Claude Code**
 
 | Skill | What it does |
 |---|---|
+| [`brief`](brief/SKILL.md) | Writes `BRIEF.md` before a site is designed. **Site** mode gathers what the page needs and hands off to `style-guide`. **Diagnose** mode looks at the real situation, researches demand and competitors, checks the draft with independent reviewers, and may conclude that a site is not the next step. |
 | [`style-guide`](style-guide/SKILL.md) | Turns one brand color and a site type into a full token system, a style guide page, base components, and a `DESIGN.md` that tells any LLM how to build with them. Writes to Figma or to code. |
 
-More skills (page design from the style guide, client brief) are on the way.
+Page design from the style guide is on the way.
 
 ![Monochrome portfolio style guide](docs/monochrome-portfolio.png)
+
+## brief
+
+Type `/brief`. The skill asks which mode you want, unless your first message already says:
+
+- **Site**: you know what you sell and want the page prepared. Up to five questions (offer, main action, proof, style inputs, one gap from research). No business advice. The brief ends with the inputs `/style-guide` reads.
+- **Diagnose**: no clients, an untested idea, or no idea yet. It finds your level (a wish, a niche, a working service, materials, a live site), asks at most five questions, and accepts a profile or portfolio link instead of typing.
+
+What it does on every run:
+
+- **Every number has a source and a label**: `measured`, `official`, `observed`, `vendor`, `user-stated`, `estimate`, `secondary`, `assumption`. Nothing is invented.
+- **Independent reviewers.** A skeptic and a source checker get only the draft, never the conversation, so they cannot inherit its reasoning. In tests they caught wrong prices, a wrong licence number, and a test whose pass mark did not match its own arithmetic.
+- **Arithmetic against your target.** Hours and the monthly income you need become an income per hour, which shows whether a price can ever get there.
+- **Legal check** for health, finance, law, children, and other regulated niches, from the official text of the law. It is not legal advice.
+- **A test before a build.** In diagnose mode it ends with the cheapest test, a pass mark, and dates set in advance.
+- **No file before you approve.**
+
+Research uses connected SEO tools when the plan allows (Ahrefs, the free-seo MCP server), then web search and the browser. It never gets around bot checks.
 
 ## style-guide
 
@@ -55,20 +74,20 @@ Copy the skill folder into your skills directory:
 
 ```bash
 git clone https://github.com/sekretmaksym-dev/design-skills
-cp -r design-skills/style-guide ~/.claude/skills/
+cp -r design-skills/style-guide design-skills/brief ~/.claude/skills/
 ```
 
-Use `.claude/skills/` inside a project instead to install it for that project only. Start a new session and type `/style-guide`.
+Use `.claude/skills/` inside a project instead to install it for that project only. Start a new session and type `/brief` or `/style-guide`.
 
 ### Cursor
 
 ```bash
-cp -r design-skills/style-guide ~/.cursor/skills/
+cp -r design-skills/style-guide design-skills/brief ~/.cursor/skills/
 ```
 
 ### ChatGPT
 
-Download [`dist/style-guide.zip`](dist/style-guide.zip) and upload it in ChatGPT under **Skills → Create → Upload from your computer**. Then ask for a style guide. ChatGPT has no Figma write access by default, so it offers the `code` output and gives you the files to download.
+Download [`dist/style-guide.zip`](dist/style-guide.zip) or [`dist/brief.zip`](dist/brief.zip) and upload it in ChatGPT under **Skills → Create → Upload from your computer**. Then ask for a style guide or a brief. ChatGPT has no Figma write access by default, so it offers the `code` output and gives you the files to download.
 
 ### Other agents
 
@@ -84,6 +103,7 @@ The skill is a plain `SKILL.md` folder (the [Agent Skills](https://agentskills.i
 
 - `code` output: tested end to end in Claude Code on both examples above, in both themes.
 - `figma` output: built and used in Cursor. Not yet tested in Claude Code.
+- `brief`: tested in Claude Code on four cases (a dental clinic site, a live SaaS page, no idea yet, a niche idea) over three rounds, and on one real freelance case.
 - ChatGPT: packaged; not yet tested.
 
 Issues and pull requests are welcome.
@@ -96,8 +116,12 @@ style-guide/
   reference.md                token tables, page recipes, component specs
   design-rules.md             template for the DESIGN.md it writes
   style-guide.template.html   fixed page template for code output
+brief/
+  SKILL.md                    the skill
+  references/                 discovery, sources and labels, reviewer prompts
+  assets/brief-template.md    the BRIEF.md template
 examples/                     two finished systems
-dist/style-guide.zip          ChatGPT upload
+dist/*.zip                    ChatGPT uploads
 sync.ps1                      maintainer script: copies skills to Claude Code and Cursor, rebuilds the zip
 ```
 

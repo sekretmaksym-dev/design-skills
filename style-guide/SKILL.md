@@ -61,6 +61,8 @@ Ask one missing step at a time. If the user already supplied later steps, do not
 
 ## Brief
 
+If the project has a `BRIEF.md`, take the color, site type, description, links, and screens from its "For /style-guide" section, and ask only for what is empty there.
+
 1. **Color and site type.** Asked in chat after the command. A hex color and a short type, such as `#1DBF73 portfolio`. A color name (`white`, `black`, `білий`, `чорний`) counts as its hex. Classify it by Color input before the next step.
 2. **Description.** Optional. Numbers, a font name, a radius, or "light only" / "dark only" written here are constraints. Research must not replace them.
 3. **Links.** Optional. Similar sites for mood only.
