@@ -90,6 +90,28 @@ Convert the hex to HSL and classify it:
 - Focus is the accent too: a black ring on Light, a white ring on Dark. No blue. The ring sits outside the control with a 2px gap, so it shows on a black or white button.
 - If the description has `accent #RRGGBB`, that hex is the brand color and gets classified by this table. The achromatic input then only picks the first theme and keeps the neutral ramp untinted.
 
+## Color scheme
+
+One input color can carry a whole scheme. The scheme decides how many extra hues the system has, never how many accents: buttons, links, and focus always use the one accent from the input color.
+
+| Scheme | Extra hues (OKLCH hue offset from the input) | Fits |
+|---|---|---|
+| Monochrome | none | Technical products, SaaS, dashboards, admin, most portfolios |
+| Accent pop | none; neutrals carry the page and the accent appears only on key actions | Developer tools, fintech, minimal brands |
+| Analogous | +30°, −30° | Calm marketing pages, lifestyle, food, wellness |
+| Complementary | 180° | Bold launches, sport, events; one strong contrast |
+| Split-complementary | 150°, 210° | Marketing landings with color-blocked sections |
+| Triadic | 120°, 240° | Playful consumer brands, kids, games |
+| Color coding | one hue per category the description names, spread around the wheel | Several services, courses, or product lines |
+
+- The description wins: `scheme triadic` (or any name above) sets it, and research only checks it.
+- Without one, research recommends the scheme: say which sites in the niche use which scheme, then pick one and give one sentence why. Monochrome is the default when the evidence is thin.
+- An achromatic input only allows Monochrome or Accent pop, unless the description adds `accent #RRGGBB`.
+- Never more than three hues in total, input included. Color coding may use more only when the description names that many categories.
+- Monochrome writes no support layer, and the system stays exactly as without this section.
+
+How extra hues are built, their roles, and their checks are in Support palettes in [reference.md](reference.md).
+
 When the color is not mid, the step 2 message gets one extra line in the user's language: how the color was read and what that changes. For achromatic, say the system is monochrome and that an accent can be added in the description as `accent #RRGGBB`. Do not open a choice window for it.
 
 ## Type scale
@@ -125,13 +147,14 @@ Fonts come out of the research, never out of habit.
 
 Tool names per host are in Platform. Say in the proposal whether Mobbin answered.
 
-Take density, type character, corner mood, and repeated blocks. Read real sizes and line heights from that site type. A portfolio search is for portfolio heroes and case studies, not for a product brand kit. Do not copy another brand's hex or logo. The palette is generated from the given color.
+Take density, type character, corner mood, repeated blocks, and the color scheme each site uses (see Color scheme). Read real sizes and line heights from that site type. A portfolio search is for portfolio heroes and case studies, not for a product brand kit. Do not copy another brand's hex or logo. The palette is generated from the given color.
 
 ## Decide, then stop
 
 Before any Figma write, post a short English proposal:
 
 - Color role. Say which kind from Color input the hex is, and which step holds it (`brand/500`, another brand step, or `brand/base` on a monochrome system). If it fails contrast as a button fill, `color/accent/default` uses a darker step of the same hue.
+- The color scheme, which research sites it came from (or that the description set it), each extra hue as hex with its offset, and the section roles it adds.
 - Light and Dark, unless the description says only one.
 - Which theme the canvas shows first.
 - The two families and which research sites they came from, the type steps for this site type, the pixel size, line height, and tracking of each step, and whether each step has a desktop size, a mobile size, or both. Say which research those numbers came from.
@@ -158,7 +181,7 @@ Figma duplicates a variable name instead of erroring. Look up by name before cre
 
 Follow [reference.md](reference.md). Order:
 
-1. Primitives, one mode `Value`, scopes empty.
+1. Primitives, one mode `Value`, scopes empty. A scheme with extra hues adds its `support-{n}` ramps here.
 2. `Color`, modes `Light` and `Dark`, aliases only.
 3. `Spacing`, `Radius`, `Typography`, `Motion`, one mode `Value`.
 4. Text styles and shadow effect styles bound to those variables.
@@ -189,7 +212,7 @@ Write three files in the project root unless they named a path: `tokens.css`, `s
 
 `style-guide.html`
 
-- Copy [style-guide.template.html](style-guide.template.html) as `style-guide.html`. Edit only the JSON inside `<script id="system">`: title, input hex, site type, default theme and themes, the Google Fonts URL, intro and job sentences, brand chips (the ramp `brand/50`…`brand/950`, or the three monochrome chips), families, screens (`["desktop","mobile"]`, or one of them), the type steps with job, family, weight, and sample, the spacing jobs, radius steps, nested note, card image (`bleed` or `inset`), and field and button copy. Do not edit the HTML, CSS, or script below it, so every run produces the same page.
+- Copy [style-guide.template.html](style-guide.template.html) as `style-guide.html`. Edit only the JSON inside `<script id="system">`: title, input hex, site type, the `scheme` object (name, why, hues with angle and token, support ramps, section blocks; omit it or set the name to `monochrome` to hide the Color Scheme section), default theme and themes, the Google Fonts URL, intro and job sentences, brand chips (the ramp `brand/50`…`brand/950`, or the three monochrome chips), families, screens (`["desktop","mobile"]`, or one of them), the type steps with job, family, weight, and sample, the spacing jobs, radius steps, nested note, card image (`bleed` or `inset`), and field and button copy. Do not edit the HTML, CSS, or script below it, so every run produces the same page.
 - When `screens` has one entry, write `--size-{step}` and `--line-height-{step}` as fixed values in `tokens.css` and skip the endpoint pairs.
 - One static page. It links `tokens.css` and opens by double-click. No build step.
 - The template follows the same assembly recipe as the Figma Style guide and Components pages in reference.md: same sections, order, gaps, chip layout, faces, and component grid. Sections: Brand Palette, Neutral Palette, Semantic Tokens, Typography, Spacing, Shadows, Border Radius. Then Components: button rows, text field grid, card, badges, icon sets.

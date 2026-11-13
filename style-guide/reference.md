@@ -35,6 +35,28 @@ On a monochrome system the status hues lose chroma so they do not shout against 
 
 Description on every primitive: `Raw ramp step. Do not apply to a layer.`
 
+### Support palettes
+
+Only when the scheme (Color scheme in SKILL.md) has extra hues.
+
+- One ramp per extra hue: `support-1/50` through `support-1/950`, then `support-2/…`. Build each from the input in OKLCH: same lightness per step as `brand/*`, the same chroma per step (lowered only where the step falls out of sRGB gamut), hue = input hue + the scheme offset. `support-{n}/500` is the anchor, like `brand/500`.
+- Color coding names each ramp after its category in the description (`support-design/…`) instead of a number.
+- Description on each primitive is the same as any primitive.
+
+Roles, in `Color`, one set per extra hue:
+
+| Name | Scope | Light | Dark | Job |
+|---|---|---|---|---|
+| `color/section/{n}/bg` | FRAME_FILL, SHAPE_FILL | `support-{n}/100` | `support-{n}/900` | Background of a color-blocked section or card |
+| `color/section/{n}/text` | TEXT_FILL | `support-{n}/900` | `support-{n}/100` | Text on that section |
+| `color/section/{n}/accent` | FRAME_FILL, SHAPE_FILL | `support-{n}/500` | `support-{n}/400` | Shapes, illustrations, chart series, tags. Never a button |
+
+Checks, both themes: `section/{n}/text` on `section/{n}/bg` reaches 4.5:1; `section/{n}/bg` differs from `color/bg/surface`; `section/{n}/accent` reaches 3:1 against `section/{n}/bg` when it carries meaning (a chart line, an icon). If a step fails, move one step and say so.
+
+Distribution follows 60-30-10: about 60% neutral surface, about 30% section backgrounds, about 10% the accent and support accents. Buttons inside a colored section stay `color/accent/*`.
+
+Code output names them `--support-1-500` and `--color-section-1-bg`.
+
 ### Monochrome
 
 For a white, black, or gray input with no `accent #RRGGBB` in the description.
@@ -164,7 +186,7 @@ Page name `Style guide`. The layout below is the same on every run. Specimen siz
 
 Turn clip content off on every frame. A new auto-layout frame is white. Clear that fill on every section and every header. The page root is the only frame filled with `color/bg/surface`, in the theme the proposal shows first.
 
-The page is one vertical frame, padding 64, gap 48, width 1200, counter axis fixed. Sections are its children, in this order: page title, Brand Palette, Neutral Palette, Semantic Tokens, Typography, Spacing, Shadows, Border Radius. Motion tokens are not drawn on the page; the components use them.
+The page is one vertical frame, padding 64, gap 48, width 1200, counter axis fixed. Sections are its children, in this order: page title, Brand Palette, Neutral Palette, Color Scheme (only when the scheme has extra hues), Semantic Tokens, Typography, Spacing, Shadows, Border Radius. Motion tokens are not drawn on the page; the components use them.
 
 Section names and the page title use the display face at `weight/strong` (regular when the display face is a serif made for regular weight) with its tracking. When the system has a mono, every caption, chip label, and meta line on both pages is set in it. The job sentence uses the body face in `color/text/secondary`.
 
@@ -187,6 +209,14 @@ Semantic tokens are not a ramp. Each color is its own chip, corner radius 8, wit
 Inside every chip the labels are a vertical frame that fills the chip and spaces the two lines apart. The step or the role (`50`, `surface`) is 12 / 16 at the top. The hex is 16 / 28 at the bottom.
 
 On a light swatch the step is a muted gray and the hex is the primary text color, the same pair as Brand `50`. On a mid swatch both lines use the primary text color, because the muted gray disappears. On a dark swatch both lines are white. Do not use one text color for the whole ramp.
+
+### Color scheme section
+
+Header: `Color Scheme`, and the job sentence names the scheme and why it was chosen. Then, in order:
+
+1. Hue line: one horizontal frame, height 48, the full column width, a 1px `color/border/default` line through the middle. Each hue is a 24px circle filled with its `/500` step, placed at its OKLCH hue angle across 0–360°, with its name under it in the caption face.
+2. One ramp per support hue, built exactly like the Brand ramp.
+3. Section blocks: one horizontal frame, gap 16, height 160. Each block fills `color/section/{n}/bg`, radius `radius/md`, padding 24, with an `h5` line and a `body` line in `color/section/{n}/text` and a 24px circle of `color/section/{n}/accent`.
 
 ### Type scale
 

@@ -44,6 +44,7 @@ The skill then researches the site type (Mobbin when it is connected, the web ot
 
 - **Tokens in three layers.** Primitives, semantic roles in Light and Dark, and component tokens. Every token has a job description and a scope.
 - **A palette from one color.** OKLCH ramps for brand and neutral. White, black, and gray inputs become a deliberate monochrome system; very light and very dark colors land on the right step instead of being forced to `500`.
+- **A color scheme, recommended by research.** The same one color can carry a monochrome, accent-pop, analogous, complementary, split-complementary, triadic, or color-coded system. Research checks what the niche uses and recommends one (or type `scheme triadic` to set it). Extra hues get their own ramps and section roles; buttons always keep the one accent.
 - **Contrast that is checked, not hoped for.** Muted text 4.5:1 on every surface, field borders and focus rings 3:1, status text 4.5:1 on its own tint. A step that fails is replaced and the proposal says so.
 - **Type from research.** Font pairs chosen from what real sites of that type use, never the defaults every generated site reaches for. Sizes snap to a 4px grid, with tracking per step and fluid `clamp()` sizes in code.
 - **Base components with every state.** Button (primary, secondary, ghost × default, hover, pressed, focus, disabled, loading), text field, card, badge, and Lucide icons at 16, 20, and 24.

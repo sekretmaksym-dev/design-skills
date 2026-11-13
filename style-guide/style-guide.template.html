@@ -28,6 +28,7 @@
       { "label": "neutral/50", "token": "--neutral-50" }
     ]
   },
+  "scheme": { "name": "monochrome" },
   "neutralJob": "Backgrounds, text and borders. These steps are a reference, not a fill to apply directly.",
   "typeIntro": "Host Grotesk for headings and reading, IBM Plex Mono for captions and meta. Each step shows the desktop and the mobile endpoint; in code the size moves between them with clamp().",
   "families": { "display": "Host Grotesk", "body": "Host Grotesk", "mono": "IBM Plex Mono" },
@@ -104,6 +105,19 @@
   .chip.tone-dark .step, .chip.tone-dark .hex { color: var(--white); }
   .chip-row { display: flex; gap: var(--space-16); }
   .chip-row .chip { flex: 1 1 0; height: 96px; border-radius: var(--radius-md); border: 1px solid var(--color-border-default); }
+
+  .hue-line { position: relative; height: 72px; }
+  .hue-line::before { content: ''; position: absolute; left: 0; right: 0; top: 24px; border-top: 1px solid var(--color-border-default); }
+  .hue-dot { position: absolute; top: 12px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: var(--space-8); }
+  .hue-dot i { width: 24px; height: 24px; border-radius: var(--radius-full); border: 1px solid var(--color-border-default); }
+  .hue-dot span { color: var(--color-text-muted); white-space: nowrap; }
+  .scheme-ramps { display: flex; flex-direction: column; gap: var(--space-8); }
+  .blocks { display: flex; gap: var(--space-16); }
+  .block { flex: 1 1 0; min-height: 160px; border-radius: var(--radius-md); padding: var(--space-24); display: flex; flex-direction: column; gap: var(--space-8); }
+  .block i { width: 24px; height: 24px; border-radius: var(--radius-full); margin-bottom: var(--space-8); }
+  .block b { font-family: var(--family-display); font-weight: var(--weight-strong); font-size: var(--size-h5); line-height: var(--line-height-h5); }
+  .block p { font-size: var(--size-body); line-height: var(--line-height-body); }
+  @media (max-width: 767px) { .blocks { flex-direction: column; } }
 
   .type-list { display: flex; flex-direction: column; }
   .type-step { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-16) 0; border-top: 1px solid var(--color-border-default); }
@@ -231,6 +245,13 @@
     <div class="ramp" id="neutral-ramp"></div>
   </section>
 
+  <section id="scheme" hidden>
+    <div class="header"><h2>Color Scheme</h2><p id="scheme-job"></p></div>
+    <div class="hue-line" id="hue-line"></div>
+    <div class="scheme-ramps" id="scheme-ramps"></div>
+    <div class="blocks" id="scheme-blocks"></div>
+  </section>
+
   <section>
     <div class="header"><h2>Semantic Tokens</h2><p>Fill colors only. Text, strokes and shadows live with the components that use them.</p></div>
     <div class="chip-row" id="semantic-fills"></div>
@@ -307,6 +328,20 @@
   ].map(([l, t]) => chip(l, t)).join('');
   $('semantic-status').innerHTML = ['danger','success','warning','info']
     .map(t => chip(t, `--color-bg-${t}`, `--color-text-${t}`)).join('');
+
+  // Color scheme: hue line, support ramps, section blocks (hidden for monochrome)
+  const SC = S.scheme;
+  if (SC && SC.name && SC.name !== 'monochrome') {
+    $('scheme').hidden = false;
+    $('scheme-job').textContent = `${cap(SC.name)}. ${SC.why || ''}`;
+    $('hue-line').innerHTML = (SC.hues || []).map(h =>
+      `<div class="hue-dot cap" style="left:calc(48px + (100% - 96px) * ${(h.angle % 360) / 360})"><i style="background:var(${h.token})"></i><span>${esc(h.label)} · ${Math.round(h.angle)}°</span></div>`).join('')
+;
+    $('scheme-ramps').innerHTML = (SC.ramps || []).map(r =>
+      `<div class="cap">${esc(r.label)}</div><div class="ramp">${[50,100,200,300,400,500,600,700,800,900,950].map(s => chip(String(s), `${r.prefix}-${s}`)).join('')}</div>`).join('');
+    $('scheme-blocks').innerHTML = (SC.blocks || []).map((b, i) =>
+      `<div class="block" style="background:var(--color-section-${i + 1}-bg);color:var(--color-section-${i + 1}-text)"><i style="background:var(--color-section-${i + 1}-accent)"></i><b>${esc(b.title)}</b><p>${esc(b.body)}</p></div>`).join('');
+  }
 
   // Typography: one frame per step, each screen endpoint with its caption
   const px = v => css(v).replace('px', '');

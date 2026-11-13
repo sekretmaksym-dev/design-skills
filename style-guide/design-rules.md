@@ -19,6 +19,7 @@ Everything visual on this project comes from this system. Before you design, wri
 1. Link `tokens.css` on every page, before any other stylesheet. In a framework, import it once at the root. With Tailwind, map the tokens into the theme (`colors`, `spacing`, `borderRadius`, `fontFamily`, `fontSize`, `boxShadow`, `transitionDuration`) and remove the default palette, so `bg-indigo-500` and friends do not exist.
 2. Every color, font, size, line height, letter spacing, gap, padding, radius, shadow, and duration is a `var(--…)` from `tokens.css`. No raw hex, `rgb()`, `oklch()`, px font sizes, or ad-hoc shadows in components.
 3. Use semantic tokens (`--color-bg-surface`, `--color-text-secondary`), or component tokens (`--button-primary-bg`), never primitives (`--neutral-500`) on a layer.
+{Only when the scheme has extra hues:} 3a. Color scheme: {scheme name}. Extra hues appear only through `--color-section-{n}-bg`, `-text`, and `-accent`: about 60% neutral surface, 30% section backgrounds, 10% accents. Buttons and links stay `--color-accent-*` inside every section.
 4. Theme switching is `data-theme="light|dark"` on `<html>`. Do not write separate colors for dark mode.
 5. In Figma, apply variables, text styles, and effect styles, and use component instances. Never detach an instance or type a raw value.
 
